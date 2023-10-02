@@ -1,0 +1,27 @@
+1. 
+openssl rand 4
+	�6�
+openssl rand -base64 4
+	pE3Vug==
+openssl dgst --list
+openssl dgst -md5
+echo "hello" > ex1.txt
+openssl dgst -md5 ex1.txt
+	MD5(ex1.txt)= b1946ac92492d2347c6235b4d2611184
+
+latwo otrzymac hasz z tekstu jawnego, niemozliwe otrzymac tekst jawyny z hasha
+hash zawsze okr dlugosci
+te same wejscie i ten sam generator daje to samo wyjscie
+
+echo -n "hello" > ex1.txt //usuniecie new line
+	MD5(ex1.txt)= 5d41402abc4b2a76b9719d911017c592
+| (pipe) laczy
+echo -n hello | base64 | openssl dgst -md5
+
+openssl rand -base64 4 | openssl dgst -md5 (zad1)
+/dev/urandom - generator losowy
+
+cat /dev/urandom | base64 | tr -cd '[:alnum:]' | head -c 16 (zad2)
+	MIQatSzDJ09HVAu7
+	
+crunch 1 3 1234567890 > ex1.txt | openssl dgst -sha-1 (try 3)
